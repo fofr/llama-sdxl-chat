@@ -22,6 +22,7 @@ export async function POST(req) {
     stream: true,
     input: {
       prompt: `${prompt}`,
+      stop_sequences: '[/PROMPT]',
       max_new_tokens: maxTokens,
       temperature: temperature,
       repetition_penalty: 1,
