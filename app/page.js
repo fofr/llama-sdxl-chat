@@ -14,19 +14,9 @@ function approximateTokenCount(text) {
 
 const VERSIONS = [
   {
-    name: "Llama 2 7B",
-    version: "4b0970478e6123a0437561282904683f32a9ed0307205dc5db2b5609d6a2ceff",
-    shortened: "7B",
-  },
-  {
-    name: "Llama 2 13B",
-    version: "d5da4236b006f967ceb7da037be9cfc3924b20d21fed88e1e94f19d56e2d3111",
-    shortened: "13B",
-  },
-  {
-    name: "Llama 2 70B",
-    version: "2c1608e18606fad2812020dc541930f2d0495ce32eee50074220b87300bc16e1",
-    shortened: "70B",
+    name: "Llama 2 Prompter",
+    version: "4f815ea4e4d6d070cd00469d1960c303f15b9b5634a8faa0a0f0136a93a8acd5",
+    shortened: "prompter",
   },
 ];
 
@@ -38,7 +28,7 @@ export default function HomePage() {
   const [error, setError] = useState(null);
 
   //   Llama params
-  const [size, setSize] = useState(VERSIONS[2]); // default to 70B
+  const [size, setSize] = useState(VERSIONS[0]);
   const [systemPrompt, setSystemPrompt] = useState(
     "You are a helpful assistant."
   );
