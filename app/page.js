@@ -21,6 +21,7 @@ export default function HomePage() {
   const [messages, setMessages] = useState([]);
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(null);
+  const [llamaMessage, setLlamaMessage] = useState('')
 
   //   Llama params
   const [size, setSize] = useState(VERSIONS[0]);
@@ -52,9 +53,9 @@ export default function HomePage() {
 
   const handleSubmit = async (userMessage) => {
     const messageHistory = [...messages];
-    if (completion.length > 0) {
+    if (llamaMessage.length > 0) {
       messageHistory.push({
-        text: completion,
+        text: llamaMessage,
         isUser: false,
       });
     }
@@ -71,6 +72,20 @@ export default function HomePage() {
     setMessages(messageHistory);
     complete(generatePrompt(messageHistory));
   };
+
+  useEffect(() => {
+    const promptIndex = completion.indexOf('[PROMPT]');
+    // const bracketIndex = completion.indexOf('[');
+
+    if (promptIndex !== -1) {
+      const message = completion.slice(promptIndex + '[PROMPT]'.length);
+      setLlamaMessage(message.trim());
+    // } else if (bracketIndex == -1) {
+    //   setLlamaMessage(completion.trim());
+    } else {
+      setLlamaMessage('');
+    }
+  }, [completion])
 
   useEffect(() => {
     if (messages?.length > 0 || completion?.length > 0) {
@@ -151,7 +166,7 @@ export default function HomePage() {
               isUser={message.isUser}
             />
           ))}
-          <Message message={completion} isUser={false} />
+          <Message message={llamaMessage} isUser={false} />
           <div ref={bottomRef} />
         </article>
       </main>
