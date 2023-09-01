@@ -6,7 +6,6 @@ import Message from "./components/Message";
 import SlideOver from "./components/SlideOver";
 import EmptyState from "./components/EmptyState";
 import { Cog6ToothIcon, CodeBracketIcon } from "@heroicons/react/20/solid";
-import LoadingChatLine from "./components/LoadingChatLine";
 import { useCompletion } from "ai/react";
 
 function approximateTokenCount(text) {
@@ -114,9 +113,6 @@ export default function HomePage() {
     }
 
     setMessages(messageHistory);
-
-    console.log("temp is ", temp);
-
     complete(prompt);
   };
 
@@ -129,30 +125,23 @@ export default function HomePage() {
   return (
     <>
       <div className="bg-slate-100 border-b-2 text-center p-3">
-        Powered by Replicate.{" "}
         <a
           href="https://replicate.com/blog/run-llama-2-with-an-api?utm_source=project&utm_campaign=llama2ai"
           target="_blank"
           className="underline"
         >
-          Run and fine-tune Llama 2 in the cloud.
+          Use Replicate to run and fine-tune Llama 2 in the cloud
         </a>
       </div>
       <nav className="grid grid-cols-2 pt-3 pl-6 pr-3 sm:grid-cols-3 sm:pl-0">
         <div className="hidden sm:inline-block"></div>
         <div className="font-semibold text-gray-500 sm:text-center">
-          🦙 <span className="hidden sm:inline-block">Chat with</span>{" "}
-          <button
-            className="py-2 font-semibold text-gray-500 hover:underline"
-            onClick={() => setOpen(true)}
-          >
-            Llama 2 {size.shortened}
-          </button>
+          🦙🖌️ <span className="hidden sm:inline-block">Paint with Llama 2</span>
         </div>
         <div className="flex justify-end">
           <a
             className="inline-flex items-center px-3 py-2 mr-3 text-sm font-semibold text-gray-700 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            href="https://github.com/replicate/chat"
+            href="https://github.com/fofr/llama-sdxl-chat"
           >
             <CodeBracketIcon
               className="w-5 h-5 text-gray-500 sm:mr-2 group-hover:text-gray-900"

@@ -37,7 +37,7 @@ const ChatForm = ({ prompt, setPrompt, onSubmit }) => {
             className="bg-gray-600 hover:bg-gray-800 items-center font-semibold text-white rounded-r-md px-5 py-3"
             type="submit"
           >
-            Chat
+            Paint
           </button>
         </form>
       </div>
