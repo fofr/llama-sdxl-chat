@@ -16,11 +16,11 @@ const Message = ({ message, isUser }) => {
     <div className={`flex gap-x-4 rounded-md ${containerClass} py-5 px-5`}>
       {isUser ? (
         <span className="text-xl sm:text-2xl" title="user">
-          🥸
+          💡
         </span>
       ) : (
         <span className="text-xl sm:text-2xl" title="AI">
-          🦙
+          🖌️
         </span>
       )}
 

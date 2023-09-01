@@ -8,10 +8,6 @@ import EmptyState from "./components/EmptyState";
 import { Cog6ToothIcon, CodeBracketIcon } from "@heroicons/react/20/solid";
 import { useCompletion } from "ai/react";
 
-function approximateTokenCount(text) {
-  return Math.ceil(text.length * 0.4);
-}
-
 const VERSIONS = [
   {
     name: "Llama 2 Prompter",
@@ -30,7 +26,7 @@ export default function HomePage() {
   const [size, setSize] = useState(VERSIONS[0]);
   const [temp, setTemp] = useState(0.75);
   const [topP, setTopP] = useState(0.9);
-  const [maxTokens, setMaxTokens] = useState(800);
+  const [maxTokens, setMaxTokens] = useState(100);
 
   const { complete, completion, setInput, input } = useCompletion({
     api: "/api",

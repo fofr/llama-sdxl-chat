@@ -27,6 +27,7 @@ export async function POST(req) {
       temperature: temperature,
       repetition_penalty: 1,
       top_p: topP,
+      top_k: 500
     },
     // IMPORTANT! The model must support streaming. See https://replicate.com/docs/streaming
     version: version,
