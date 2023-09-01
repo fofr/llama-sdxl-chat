@@ -14,7 +14,7 @@ if (!process.env.REPLICATE_API_TOKEN) {
 export const runtime = "edge";
 
 export async function POST(req) {
-  const { prompt, systemPrompt, maxTokens, temperature, topP, version } =
+  const { prompt, maxTokens, temperature, topP, version } =
     await req.json();
 
   const response = await replicate.predictions.create({
@@ -22,7 +22,6 @@ export async function POST(req) {
     stream: true,
     input: {
       prompt: `${prompt}`,
-      system_prompt: systemPrompt,
       max_new_tokens: maxTokens,
       temperature: temperature,
       repetition_penalty: 1,

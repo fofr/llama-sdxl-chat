@@ -29,9 +29,6 @@ export default function HomePage() {
 
   //   Llama params
   const [size, setSize] = useState(VERSIONS[0]);
-  const [systemPrompt, setSystemPrompt] = useState(
-    "You are a helpful assistant."
-  );
   const [temp, setTemp] = useState(0.75);
   const [topP, setTopP] = useState(0.9);
   const [maxTokens, setMaxTokens] = useState(800);
@@ -40,7 +37,6 @@ export default function HomePage() {
     api: "/api",
     body: {
       version: size.version,
-      systemPrompt: systemPrompt,
       temperature: parseFloat(temp),
       topP: parseFloat(topP),
       maxTokens: parseInt(maxTokens),
@@ -57,7 +53,6 @@ export default function HomePage() {
   const handleSettingsSubmit = async (event) => {
     event.preventDefault();
     setOpen(false);
-    setSystemPrompt(event.target.systemPrompt.value);
   };
 
   const handleSubmit = async (userMessage) => {
@@ -162,8 +157,6 @@ export default function HomePage() {
         <SlideOver
           open={open}
           setOpen={setOpen}
-          systemPrompt={systemPrompt}
-          setSystemPrompt={setSystemPrompt}
           handleSubmit={handleSettingsSubmit}
           temp={temp}
           setTemp={setTemp}
@@ -171,7 +164,6 @@ export default function HomePage() {
           setMaxTokens={setMaxTokens}
           topP={topP}
           setTopP={setTopP}
-          versions={VERSIONS}
           size={size}
           setSize={setSize}
         />
